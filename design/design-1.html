@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f8f4e1;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    .undangan-modern {
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px solid #d4af37;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 28px;
+      color: #555;
+    }
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .foto-prewedding img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .countdown {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #d4af37;
+    }
+  </style>
+</head>
+<body>
+  <div class="undangan-modern">
+    <h1>Pernikahan</h1>
+    <p>Kami dengan bahagia mengundang Anda untuk merayakan pernikahan</p>
+    <h2>{{coupleName}}</h2>
+    <p><strong>Kapan:</strong> {{weddingDate}} pukul {{weddingTime}}</p>
+    <p><strong>Dimana:</strong> {{weddingLocation}}</p>
+    <p>Mohon konfirmasi kehadiran sebelum <strong>{{rsvpDate}}</strong></p>
+    <div class="foto-prewedding">{{photoHTML}}</div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+  
+  <script>
+    function hitungMundur(tanggal, waktu) {
+      const eventTime = new Date(`${tanggal} ${waktu}`).getTime();
+      const countdownElem = document.getElementById('countdown');
+      setInterval(() => {
+        const now = new Date().getTime();
+        const difference = eventTime - now;
+        if (difference <= 0) {
+          countdownElem.innerHTML = "Hari Pernikahan Telah Tiba!";
+        } else {
+          const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+          countdownElem.innerHTML = `Tersisa: ${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+        }
+      }, 1000);
+    }
+    hitungMundur("{{weddingDate}}", "{{weddingTime}}");
+  </script>
+</body>
+</html>

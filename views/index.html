@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generator Undangan Pernikahan</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Generator Undangan Pernikahan</h1>
+    <form method="POST" action="/generate" enctype="multipart/form-data">
+      <label for="coupleName">Nama Pasangan:</label>
+      <input type="text" id="coupleName" name="coupleName" required><br><br>
+
+      <label for="weddingDate">Tanggal Pernikahan:</label>
+      <input type="date" id="weddingDate" name="weddingDate" required><br><br>
+
+      <label for="weddingTime">Waktu Pernikahan:</label>
+      <input type="time" id="weddingTime" name="weddingTime" required><br><br>
+
+      <label for="weddingLocation">Lokasi Pernikahan:</label>
+      <input type="text" id="weddingLocation" name="weddingLocation" required><br><br>
+
+      <label for="rsvpDate">Batas Konfirmasi Kehadiran (RSVP):</label>
+      <input type="date" id="rsvpDate" name="rsvpDate" required><br><br>
+
+      <label for="preWeddingPhotos">Unggah Foto Pre-Wedding (maks. 7):</label>
+      <input type="file" id="preWeddingPhotos" name="preWeddingPhotos" accept="image/*" multiple required><br><br>
+
+      <label for="design">Pilih Desain Undangan:</label>
+      <select id="design" name="design" required>
+        <option value="elegan">Elegan & Formal</option>
+        <option value="minimalis">Modern & Minimalis</option>
+      </select><br><br>
+
+      <button type="submit">Buat Undangan</button>
+    </form>
+    <br>
+    <a href="/admin" class="admin-link">Panel Admin</a>
+  </div>
+</body>
+</html>
+
