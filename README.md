@@ -58,7 +58,7 @@ The server will run at [http://localhost:3000](http://localhost:3000).
 │   └── uploads/          # Folder for storing uploaded photos
 ├── views/
 │   └── index.html        # Wedding invitation form
-├── app.js                # Main server file
+├── server.js                # Main server file
 └── package.json          # Project dependencies and scripts
 ```
 
